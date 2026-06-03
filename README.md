@@ -1,6 +1,10 @@
 # Moodify 🎵
-
 Reproductor de música local con análisis de mood automático.
+<p align="center">
+  <img width="524" height="765" alt="Screenshot 2026-05-28 150713" src="https://github.com/user-attachments/assets/88e88161-5d98-4891-abe2-0b2b8bc56883" />
+  <br>
+  <em>Vista previa de la aplicación</em>
+</p>
 
 ## Qué hace
 
