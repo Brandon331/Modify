@@ -1,0 +1,44 @@
+{
+  "name": "moodify",
+  "version": "1.0.0",
+  "description": "Spotify mood player with animated backgrounds",
+  "main": "src/main/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite src/renderer --port 5173",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
+    "build": "vite build src/renderer --outDir ../../dist/renderer",
+    "dist": "npm run build && electron-builder",
+    "lint": "eslint src --ext .js,.jsx",
+    "video": "node video-demo.js"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.40.0",
+    "electron-store": "^8.2.0",
+    "framer-motion": "^11.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.23.0",
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.0",
+    "eslint": "^8.57.0",
+    "vite": "^5.2.0",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.moodify.app",
+    "productName": "Moodify",
+    "files": ["dist/**/*", "src/main/**/*", "src/preload/**/*"],
+    "directories": { "output": "build" },
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" },
+    "linux": { "target": "AppImage" },
+    "protocols": [{ "name": "Moodify", "schemes": ["moodify"] }]
+  }
+}

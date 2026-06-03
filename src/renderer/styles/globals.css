@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --px: 2px;
+  --bg0: #fce4ec;
+  --bg1: #f8bbd0;
+  --bg2: #f48fb1;
+  --surface: #fff0f5;
+  --surface2: #ffe4ef;
+  --border: #d63384;
+  --border2: #f06292;
+  --text: #4a0a2a;
+  --text2: #8b2252;
+  --accent: #e91e8c;
+  --accent2: #ff80ab;
+  --star: #ffb300;
+  --cloud: #ce93d8;
+  --shadow: #d63384;
+}
+
+[data-theme="lavender"] {
+  --bg0: #ede7f6; --bg1: #d1c4e9; --bg2: #b39ddb;
+  --surface: #f3f0ff; --surface2: #e8e0ff;
+  --border: #7c3aed; --border2: #a78bfa;
+  --text: #2e1065; --text2: #5b21b6;
+  --accent: #7c3aed; --accent2: #c4b5fd;
+  --star: #fbbf24; --cloud: #a78bfa; --shadow: #7c3aed;
+}
+
+[data-theme="peach"] {
+  --bg0: #fff3e0; --bg1: #ffe0b2; --bg2: #ffcc80;
+  --surface: #fffbf5; --surface2: #fff3e0;
+  --border: #e65100; --border2: #ff7043;
+  --text: #3e1a00; --text2: #7a3300;
+  --accent: #ff5722; --accent2: #ffab91;
+  --star: #ffd54f; --cloud: #ffb74d; --shadow: #e65100;
+}
+
+[data-theme="mint"] {
+  --bg0: #e0f7fa; --bg1: #b2ebf2; --bg2: #80deea;
+  --surface: #f0ffff; --surface2: #e0ffff;
+  --border: #00695c; --border2: #26a69a;
+  --text: #00251a; --text2: #00574b;
+  --accent: #009688; --accent2: #80cbc4;
+  --star: #ffe082; --cloud: #80cbc4; --shadow: #00695c;
+}
+
+[data-theme="sakura"] {
+  --bg0: #fdf2f8; --bg1: #fce7f3; --bg2: #fbcfe8;
+  --surface: #fff5fb; --surface2: #ffeef8;
+  --border: #be185d; --border2: #ec4899;
+  --text: #500724; --text2: #831843;
+  --accent: #ec4899; --accent2: #f9a8d4;
+  --star: #fde68a; --cloud: #f0abfc; --shadow: #be185d;
+}
+
+/* ── Reset ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  /* Transparente para que el AnimatedBackground sea visible */
+  background: transparent;
+  color: var(--text);
+  image-rendering: pixelated;
+}
+
+/* ── Pixel box ── */
+.px-box {
+  background: var(--surface);
+  border: var(--px) solid var(--border);
+  box-shadow:
+    var(--px) var(--px) 0 0 var(--border),
+    calc(-1 * var(--px)) var(--px) 0 0 var(--border),
+    var(--px) calc(-1 * var(--px)) 0 0 var(--border),
+    4px 4px 0 0 var(--shadow);
+  image-rendering: pixelated;
+}
+
+/* ── Pixel button ── */
+.px-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  cursor: pointer;
+  background: var(--accent2);
+  color: var(--text);
+  border: var(--px) solid var(--border);
+  box-shadow: 2px 2px 0 0 var(--shadow);
+  padding: 6px 10px;
+  image-rendering: pixelated;
+  transition: none;
+  user-select: none;
+}
+.px-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.px-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.px-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.px-btn-primary:hover { background: var(--accent2); color: var(--text); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg1); }
+::-webkit-scrollbar-thumb { background: var(--border2); border: 1px solid var(--border); }
+
+/* ── Animations ── */
+@keyframes twinkle {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.3; transform: scale(0.6); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50%     { transform: translateY(-4px); }
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.2); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-3px); }
+}

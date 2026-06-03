@@ -1,0 +1,131 @@
+/* CloudSprite.module.css */
+
+/* ── Wrapper base ── */
+.wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+/* Posición CENTER: centrado vertical y horizontal en la pantalla */
+.wrapperCenter {
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Posición TOP: esquina superior, comportamiento original */
+.wrapperTop {
+  top: 0;
+  height: 160px;
+}
+
+/* ── Nube base ── */
+.cloud {
+  position: absolute;
+  pointer-events: none;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 6px rgba(180, 130, 200, 0.35));
+  animation: floatCloud ease-in-out infinite;
+}
+
+/* Nube principal — clickeable */
+.cloudMain {
+  pointer-events: all;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  animation-duration: 9s;
+  animation-delay: 0s;
+  transition: transform 0.15s ease;
+}
+
+/* En modo center la nube principal se posiciona relativa al centro del flex */
+.wrapperCenter .cloudMain {
+  position: relative;
+  top: auto;
+  right: auto;
+}
+
+/* En modo top, posición absoluta original */
+.wrapperTop .cloudMain {
+  top: 18px;
+  right: 14%;
+}
+
+.cloudMain:hover {
+  transform: scale(1.12) translateY(-3px);
+  filter: drop-shadow(0 5px 10px rgba(200, 130, 220, 0.55));
+}
+
+.cloudMain:active,
+.burst {
+  transform: scale(0.88) !important;
+}
+
+/* Nube secundaria — solo en modo top */
+.cloudSm {
+  top: 55px;
+  left: 8%;
+  opacity: 0.82;
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+
+/* Nube micro — solo en modo top */
+.cloudXs {
+  top: 30px;
+  left: 38%;
+  opacity: 0.6;
+  animation-duration: 7.5s;
+  animation-delay: -2s;
+}
+
+/* Canvas del sprite .aseprite animado */
+.spriteCanvas {
+  display: block;
+  image-rendering: pixelated;
+  width: 80px;
+  height: auto;
+}
+
+/* Versión grande para modo center */
+.spriteCanvasCenter {
+  display: block;
+  image-rendering: pixelated;
+  width: 140px;
+  height: auto;
+}
+
+/* ── Animación de flotado ── */
+@keyframes floatCloud {
+  0%   { transform: translateY(0px)   translateX(0px); }
+  20%  { transform: translateY(-7px)  translateX(2px); }
+  50%  { transform: translateY(-13px) translateX(0px); }
+  80%  { transform: translateY(-5px)  translateX(-2px); }
+  100% { transform: translateY(0px)   translateX(0px); }
+}
+
+/* ── Corazones flotantes ── */
+.heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 13px;
+  pointer-events: none;
+  animation: floatHeart 1.8s ease-out forwards;
+  color: #f090b0;
+  text-shadow: 0 0 4px rgba(240, 100, 160, 0.6);
+}
+
+@keyframes floatHeart {
+  0%   { opacity: 0;   transform: translateY(0)    scale(0.4); }
+  15%  { opacity: 1;   transform: translateY(-18px) scale(1); }
+  70%  { opacity: 0.7; transform: translateY(-70px) scale(0.85); }
+  100% { opacity: 0;   transform: translateY(-110px) scale(0.5); }
+}

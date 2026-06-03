@@ -1,0 +1,30 @@
+.track {
+  height: var(--h, 4px);
+  background: var(--color-surface);
+  border-radius: calc(var(--h, 4px) / 2);
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.track:hover .thumb { opacity: 1; }
+
+.fill {
+  height: 100%;
+  background: var(--mood-color);
+  border-radius: inherit;
+  transition: width 0.2s linear;
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--h, 4px) * 3);
+  height: calc(var(--h, 4px) * 3);
+  border-radius: 50%;
+  background: var(--mood-color);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}

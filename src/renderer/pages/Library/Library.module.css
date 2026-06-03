@@ -1,0 +1,226 @@
+.root {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+.count {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.importBtn {
+  padding: 8px 18px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.importBtn:hover { opacity: 0.85; }
+
+.analyzeAllBtn {
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.analyzeAllBtn:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+
+/* ── Mood filter chips ── */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border, rgba(255,255,255,0.15));
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover { border-color: var(--mood-color, var(--color-accent)); color: var(--color-text-primary); }
+.chipActive {
+  background: var(--mood-color, var(--color-accent));
+  border-color: transparent;
+  color: #fff;
+}
+.chipCount {
+  opacity: 0.75;
+  margin-left: 3px;
+}
+
+/* ── Drop zone ── */
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px dashed var(--color-border, rgba(255,255,255,0.2));
+  border-radius: 16px;
+  padding: 60px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 280px;
+}
+.dropZone:hover, .dragging {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+}
+.dropIcon { font-size: 3rem; }
+.dropTitle { font-size: 1.1rem; font-weight: 600; color: var(--color-text-primary); }
+.dropSub { font-size: 0.82rem; color: var(--color-text-secondary); }
+
+/* ── Track list ── */
+.trackList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.trackRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--color-surface, rgba(255,255,255,0.05));
+  border: 1px solid transparent;
+  transition: border-color 0.15s, background 0.15s;
+}
+.trackRow:hover {
+  border-color: var(--mood-color, var(--color-accent));
+  background: color-mix(in srgb, var(--mood-color, var(--color-accent)) 6%, var(--color-surface, rgba(255,255,255,0.05)));
+}
+
+.playBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+.playBtn:hover {
+  color: var(--mood-color, var(--color-accent));
+  background: color-mix(in srgb, var(--mood-color, var(--color-accent)) 15%, transparent);
+}
+
+.trackInfo { flex: 1; min-width: 0; }
+.trackName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.trackMeta {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.moodPill {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.analyzeBtn {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid var(--color-border, rgba(255,255,255,0.15));
+  border-radius: 6px;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.analyzeBtn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Analysis progress */
+.progressWrap {
+  flex-shrink: 0;
+  width: 100px;
+  height: 20px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.progressBar {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+.progressLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity 0.15s, color 0.15s;
+}
+.deleteBtn:hover { opacity: 1; color: #e05555; }
